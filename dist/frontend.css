@@ -1,0 +1,168 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Finlandica';
+  src: url("fonts/finlandica-bold.woff2") format("woff2"), url("fonts/finlandica-bold.ttf") format("ttf");
+  font-weight: 700; }
+
+@font-face {
+  font-family: 'Finlandica';
+  src: url("fonts/finlandica-regular.woff2") format("woff2"), url("fonts/finlandica-regular.eot") format("eot");
+  font-weight: 400; }
+
+#jwif-shortcodelist .jwif-listing {
+  box-sizing: border-box;
+  max-width: calc(100% + 2rem);
+  margin: 0 -1rem;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  font-family: Finlandica, sans-serif; }
+  #jwif-shortcodelist .jwif-listing *, #jwif-shortcodelist .jwif-listing *:before, #jwif-shortcodelist .jwif-listing *:after {
+    box-sizing: inherit;
+    font-family: inherit; }
+  #jwif-shortcodelist .jwif-listing__filters {
+    padding: 1rem 0.5rem; }
+  #jwif-shortcodelist .jwif-listing__filter {
+    margin: 0.5rem;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid #002da1;
+    color: #002da1;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: 'Finlandica', sans-serif;
+    border-radius: 36px;
+    padding: 0 20px;
+    height: 36px;
+    line-height: 36px; }
+    #jwif-shortcodelist .jwif-listing__filter:hover, #jwif-shortcodelist .jwif-listing__filter:focus, #jwif-shortcodelist .jwif-listing__filter:active {
+      background: rgba(0, 45, 161, 0.1);
+      outline: 0;
+      outline-offset: 0; }
+    #jwif-shortcodelist .jwif-listing__filter.active {
+      background: #002da1;
+      color: #fff; }
+    #jwif-shortcodelist .jwif-listing__filter--reset {
+      background: transparent;
+      border: 0;
+      outline: 0; }
+    #jwif-shortcodelist .jwif-listing__filter--reset:before {
+      content: "✕";
+      color: #002da3;
+      width: 30px;
+      height: 30px;
+      line-height: 23px;
+      font-size: 15px;
+      text-align: center;
+      box-shadow: none;
+      display: inline-block !important;
+      padding: 5px; }
+  #jwif-shortcodelist .jwif-listing__jobs {
+    display: flex;
+    flex-flow: row wrap; }
+    @media (max-width: 1023px) {
+      #jwif-shortcodelist .jwif-listing__jobs {
+        justify-content: center;
+        padding: 0 1rem; } }
+    #jwif-shortcodelist .jwif-listing__jobs__none {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 80%; }
+  #jwif-shortcodelist .jwif-listing__job {
+    flex: 0 0 100%;
+    margin-bottom: 1rem;
+    border: 1px solid #DFDFDF;
+    background: #ffffff;
+    text-decoration: none;
+    position: relative;
+    min-height: 260px; }
+    @media (min-width: 640px) {
+      #jwif-shortcodelist .jwif-listing__job {
+        flex: 0 0 calc(50% - 2rem);
+        margin: 1rem; } }
+    @media (min-width: 1024px) {
+      #jwif-shortcodelist .jwif-listing__job {
+        flex: 0 0 calc(25% - 2.5rem);
+        margin: 1rem; } }
+    #jwif-shortcodelist .jwif-listing__job__logo {
+      height: 150px;
+      width: 85%;
+      margin: 10px auto 0;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center; }
+    #jwif-shortcodelist .jwif-listing__job__data {
+      background: #efefef;
+      color: #191919;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem 1rem 0.5rem; }
+      #jwif-shortcodelist .jwif-listing__job__data h3 {
+        color: #002ea1;
+        margin: 0;
+        font-size: 18px;
+        font-weight: 400;
+        min-height: 40px; }
+  #jwif-shortcodelist .jwif-listing__more {
+    text-align: center;
+    padding-top: 2rem; }
+    #jwif-shortcodelist .jwif-listing__more--button {
+      margin: 0.5rem;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid #002da1;
+      color: #002da1;
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-family: 'Finlandica', sans-serif;
+      border-radius: 36px;
+      padding: 0 20px;
+      height: 36px;
+      line-height: 36px;
+      position: relative; }
+      #jwif-shortcodelist .jwif-listing__more--button:hover, #jwif-shortcodelist .jwif-listing__more--button:focus, #jwif-shortcodelist .jwif-listing__more--button:active {
+        background: rgba(0, 45, 161, 0.1);
+        outline: 0;
+        outline-offset: 0; }
+      #jwif-shortcodelist .jwif-listing__more--button.active {
+        background: #002da1;
+        color: #fff; }
+      #jwif-shortcodelist .jwif-listing__more--button.hidden {
+        display: none; }
+      #jwif-shortcodelist .jwif-listing__more--button .loader {
+        display: none; }
+      #jwif-shortcodelist .jwif-listing__more--button.loading .loader,
+      #jwif-shortcodelist .jwif-listing__more--button.loading .loader:after {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px; }
+      #jwif-shortcodelist .jwif-listing__more--button.loading .loader {
+        display: block;
+        font-size: 5px;
+        position: absolute;
+        top: -42px;
+        left: 37px;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(0, 45, 161, 0.2);
+        border-right: 1.1em solid rgba(0, 45, 161, 0.2);
+        border-bottom: 1.1em solid rgba(0, 45, 161, 0.2);
+        border-left: 1.1em solid #002da1;
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear; }
+
+.entry .entry-content #jwif-shortcodelist {
+  max-width: calc(100% + 2rem); }
+
+/*
+ * https://projects.lukehaas.me/css-loaders/
+ */
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+/*# sourceMappingURL=frontend.css.map */

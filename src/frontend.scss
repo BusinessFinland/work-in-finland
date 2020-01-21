@@ -1,0 +1,218 @@
+@font-face {
+  font-family: 'Finlandica';
+  src: url('fonts/finlandica-bold.woff2') format('woff2'),
+       url('fonts/finlandica-bold.ttf') format('ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Finlandica';
+  src: url('fonts/finlandica-regular.woff2') format('woff2'),
+       url('fonts/finlandica-regular.eot') format('eot');
+  font-weight: 400;
+}
+
+@mixin button() {
+  margin: 0.5rem;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid rgb(0, 45, 161);
+  color: rgb(0, 45, 161);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-family: 'Finlandica', sans-serif;
+  border-radius: 36px;
+  padding: 0 20px;
+  height: 36px;
+  line-height: 36px;
+
+
+  &:hover, &:focus, &:active {
+    background: rgba(0,45,161,0.1);
+    outline: 0;
+    outline-offset: 0;
+  }
+
+  &.active {
+    background: rgb(0, 45, 161);
+    color: #fff;
+
+    &:hover, &:focus {
+      // color: rgb(0, 45, 161);
+    }
+  }
+
+}
+
+#jwif-shortcodelist {
+  .jwif-listing {
+    box-sizing: border-box;
+    // max-width: 100%;
+    max-width: calc(100% + 2rem);
+    margin: 0 -1rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    font-family: Finlandica, sans-serif;
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+      font-family: inherit;
+    }
+
+    &__filters {
+      padding: 1rem 0.5rem;
+    }
+
+    &__filter {
+      @include button();
+
+      &--reset {
+        background: transparent;
+        border: 0;
+        outline: 0;
+      }
+      &--reset:before {
+        content: "✕";
+        color: rgb(0, 45, 163);
+        width: 30px;
+        height: 30px;
+        line-height: 23px;
+        font-size: 15px;
+        text-align: center;
+        box-shadow: none;
+        display: inline-block !important;
+        padding: 5px;
+      }
+    }
+
+    &__jobs {
+      display: flex;
+      flex-flow: row wrap;
+
+      @media (max-width: 1023px) {
+        justify-content: center;
+        padding: 0 1rem;
+      }
+
+      &__none {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%;
+      }
+
+      // justify-content: space-around;
+      // align-items: flex-start;
+    }
+
+    &__job {
+      flex: 0 0 100%;
+      margin-bottom: 1rem;
+
+      @media (min-width: 640px) {
+        flex: 0 0 calc(50% - 2rem);
+        margin: 1rem;
+      }
+
+      @media (min-width: 1024px) {
+        flex: 0 0 calc(25% - 2.5rem);
+        margin: 1rem;
+      }
+
+      border: 1px solid #DFDFDF;
+      background: #ffffff;
+      text-decoration: none;
+      position: relative;
+      min-height: 260px;
+
+      &__logo {
+        height: 150px;
+        width: 85%;
+        margin: 10px auto 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+      }
+
+      &__data {
+        background: #efefef;
+        color: #191919;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 1rem 1rem 0.5rem;
+
+        h3 {
+          color: #002ea1;
+          margin: 0;
+          font-size: 18px;
+          font-weight: 400;
+          min-height: 40px;
+        }
+      }
+    }
+
+    &__more {
+      text-align: center;
+      padding-top: 2rem;
+
+      &--button {
+        @include button();
+        position: relative;
+
+        &.hidden {
+          display: none;
+        }
+
+        .loader {
+          display: none;
+        }
+
+        &.loading {
+          .loader,
+          .loader:after {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+          }
+          .loader {
+            display: block;
+            font-size: 5px;
+            position: absolute;
+            top: -42px;
+            left: 37px;
+            text-indent: -9999em;
+            border-top: 1.1em solid rgba(0,45,161, 0.2);
+            border-right: 1.1em solid rgba(0,45,161, 0.2);
+            border-bottom: 1.1em solid rgba(0,45,161, 0.2);
+            border-left: 1.1em solid #002da1;
+            transform: translateZ(0);
+            -webkit-animation: load8 1.1s infinite linear;
+            animation: load8 1.1s infinite linear;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+
+// twentynineteen
+.entry .entry-content #jwif-shortcodelist {
+  max-width: calc(100% + 2rem);
+}
+
+
+/*
+ * https://projects.lukehaas.me/css-loaders/
+ */
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
