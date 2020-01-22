@@ -4,7 +4,7 @@
  * Description:     Fetch Job Openings from jobs.workinfinland.fi
  * Text Domain:     jwif
  * Domain Path:     /languages
- * Version:         0.1.3
+ * Version:         0.1.4
  *
  * @package         Jobs_Workinfinland
  */
