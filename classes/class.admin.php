@@ -134,6 +134,11 @@ class Admin {
 
       <ul>
         <li>
+          Default shortcode. Example: <br />
+          <code>[job-openings]</code>
+        </li>
+
+        <li>
           perPage: Controls the amount of jobs in a listing page. Example: <br />
           <code>[job-openings perPage=5]</code>
         </li>
@@ -143,6 +148,11 @@ class Admin {
           <code>[job-openings showfilters=false]</code>
         </li>
 
+         <li>
+          showloadmore: Hide load more button. Example: <br />
+          <code>[job-openings showloadmore=false]</code>
+        </li>
+
         <li>
           category: Show listing from a spesific category. Example: <br />
           <code>[job-openings category=60]</code>
@@ -150,7 +160,7 @@ class Admin {
       </ul>
 
       <p>You can combine multiple parameters into a single shortcode, like so:<br>
-      <code>[job-openings category=60 perPage=10 showfilters=false]</code></p>
+      <code>[job-openings category=60 perPage=10 showfilters=false showloadmore=false]</code></p>
     </div>
     <?php
   }
