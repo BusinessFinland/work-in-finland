@@ -39,11 +39,13 @@ class Frontend {
       'perpage' => $settings['perPage'],
       'region' => $settings['region'],
       'showfilters' => true,
+      'showloadmore' => true,
       'category' => null,
     ], $attributes);
 
     // Force data types, shortcodes operate with lowercase strings only
     $attributes['showfilters'] = $attributes['showfilters'] === 'false' ? false : true;
+    $attributes['showloadmore'] = $attributes['showloadmore'] === 'false' ? false : true;
     $attributes['perPage'] = (int) $attributes['perpage'];
     $attributes['region'] = (int) $attributes['region'];
     $attributes['category'] = (int) $attributes['category'];
@@ -65,6 +67,7 @@ class Frontend {
     }
 
     $showFilters = $atts['showfilters'];
+    $showLoadMore = $atts['showloadmore'];
     $page = 1;
     $perPage = esc_attr($options['per_page']);
     $region = esc_attr($options['job-region']);
@@ -110,7 +113,7 @@ class Frontend {
       }
       echo "</div>";
 
-      if ($totalPages > 1) {
+      if ($totalPages > 1 && $showLoadMore) {
         echo "<div class='jwif-listing__more'>";
           echo "<button class='jwif-listing__more--button'>";
             echo __('Load more', 'jwif');
