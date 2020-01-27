@@ -1,15 +1,15 @@
-# Jobs - Work In Finland #
-**Requires at least:** 4.5
-**Tested up to:** 5.3
-**Requires PHP:** 5.6
+=== Jobs - Work In Finland===
+Requires at least: 5.1
+Tested up to: 5.3
+Requires PHP: 5.6
 
 This plugin enables a WordPress site to show job openings from jobs.workinfinland.fi.
 
-## Description ##
+== Description ==
 
 This plugin adds the capability to fetch job openings from jobs.workinfinland.fi. The actual data is not managed via WordPress, but rather via a separate user interface provided and instructed by Business Finland.
 
-## Installation ##
+== Installation ==
 
 This section describes how to install the plugin and get it working.
 
