@@ -19,3 +19,9 @@ e.g.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Follow shortcode install instructions provided in Settings > Job openings
 4. Modify your styles to make the listing fit your site's look and feel
+
+== Changelog ==
+
+= 0.2 =
+* Fixed JS error if shortcode loadmore button is not found
+* Disabled enqueuing JS & CSS assets if shortcode is not found from page
