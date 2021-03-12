@@ -1,6 +1,6 @@
 === Jobs - Work In Finland===
 Requires at least: 5.1
-Tested up to: 5.3
+Tested up to: 5.7
 Requires PHP: 5.6
 
 This plugin enables a WordPress site to show job openings from jobs.workinfinland.fi.
