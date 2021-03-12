@@ -4,13 +4,10 @@
  * Description:     Fetch Job Openings from jobs.workinfinland.fi
  * Text Domain:     jwif
  * Domain Path:     /languages
- * Version:         0.1.8
+ * Version:         0.1.9
  *
  * @package         Jobs_Workinfinland
  */
-
-
-// Your code starts here.
 
 require_once 'classes/class.main.php';
 

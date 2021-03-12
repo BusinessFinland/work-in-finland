@@ -33,7 +33,7 @@ class Listing {
      */
     if (this.config.totalPages > 1) {
       this.loadMoreEl = this.element.querySelector('.jwif-listing__more--button')
-      this.loadMoreEl.addEventListener('click', this.loadMore)
+      this.loadMoreEl && this.loadMoreEl.addEventListener('click', this.loadMore)
     }
 
 

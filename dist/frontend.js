@@ -100,6 +100,19 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -116,8 +129,27 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
 function _arrayWithHoles(arr) {
@@ -125,10 +157,7 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -154,13 +183,28 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
 
-var Filter =
-/*#__PURE__*/
-function () {
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+var Filter = /*#__PURE__*/function () {
   function Filter(element, listing) {
     _classCallCheck(this, Filter);
 
@@ -304,15 +348,15 @@ function () {
   return Filter;
 }();
 
-var ResetFilters =
-/*#__PURE__*/
-function (_Filter) {
+var ResetFilters = /*#__PURE__*/function (_Filter) {
   _inherits(ResetFilters, _Filter);
+
+  var _super = _createSuper(ResetFilters);
 
   function ResetFilters() {
     _classCallCheck(this, ResetFilters);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ResetFilters).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(ResetFilters, [{
@@ -336,9 +380,7 @@ function (_Filter) {
   return ResetFilters;
 }(Filter);
 
-var Listing =
-/*#__PURE__*/
-function () {
+var Listing = /*#__PURE__*/function () {
   function Listing(element) {
     var _this = this;
 
@@ -385,7 +427,7 @@ function () {
 
     if (this.config.totalPages > 1) {
       this.loadMoreEl = this.element.querySelector('.jwif-listing__more--button');
-      this.loadMoreEl.addEventListener('click', this.loadMore);
+      this.loadMoreEl && this.loadMoreEl.addEventListener('click', this.loadMore);
     }
     /**
      * Initialize filters if they exist
@@ -490,11 +532,11 @@ function () {
 
   }, {
     key: "getDataAttrs",
-
+    value:
     /**
      * Get this.config values from this.element
      */
-    value: function getDataAttrs() {
+    function getDataAttrs() {
       return {
         region: parseInt(this.element.getAttribute('data-region'), 10),
         category: parseInt(this.element.getAttribute('data-category'), 10),

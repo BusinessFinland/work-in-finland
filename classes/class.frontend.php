@@ -11,13 +11,9 @@ class Frontend {
     add_action('wp_enqueue_scripts', function() {
       $url = $this->core->pluginUrl;
 
-      wp_enqueue_script('jwif-frontend', $url . 'dist/frontend.js', [], $this->core->version, true);
-      wp_enqueue_style('jwif-frontend', $url . 'dist/frontend.css', [], $this->core->version);
+      wp_register_script('jwif-frontend', $url . 'dist/frontend.js', [], $this->core->version, true);
+      wp_register_style('jwif-frontend', $url . 'dist/frontend.css', [], $this->core->version);
 
-      wp_localize_script('jwif-frontend', 'jwif', [
-        'adminAJAX' => admin_url('admin-ajax.php'),
-        'noResultsText' => apply_filters('jwif_no_results_text', 'No results. Come back later or try different parameters.'),
-      ]);
     });
 
     add_action('wp_ajax_jwif_loadmore', [$this, 'loadMore']);
@@ -33,6 +29,13 @@ class Frontend {
 
       return;
     }
+
+    wp_enqueue_script('jwif-frontend');
+    wp_enqueue_style('jwif-frontend');
+    wp_localize_script('jwif-frontend', 'jwif', [
+      'adminAJAX' => admin_url('admin-ajax.php'),
+      'noResultsText' => apply_filters('jwif_no_results_text', 'No results. Come back later or try different parameters.'),
+    ]);
 
     $settings = $this->core->getSettings();
     $attributes = shortcode_atts([
