@@ -2,7 +2,7 @@
 namespace JWIF;
 
 class API {
-  public $url = 'https://jobs.workinfinland.fi/wp-json/wp/v2/';
+  public $url = 'https://careerinfinland.fi-p.seravo.com/wp-json/wp/v2/';
 
   public function __construct($plugin) {
     $this->core = $plugin;
